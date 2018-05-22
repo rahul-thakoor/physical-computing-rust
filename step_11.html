@@ -1,0 +1,481 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Making traffic lights - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="_FontAwesome/css/font-awesome.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li><li><a href="step_11.html" class="active"><strong aria-hidden="true">11.</strong> Making traffic lights</a></li><li><a href="step_12.html"><strong aria-hidden="true">12.</strong> Using a light-dependent resistor</a></li><li><a href="step_13.html"><strong aria-hidden="true">13.</strong> Using a PIR sensor</a></li><li><a href="step_14.html"><strong aria-hidden="true">14.</strong> Using an ultrasonic distance sensor</a></li><li><a href="step_15.html"><strong aria-hidden="true">15.</strong> Analogue inputs</a></li><li><a href="step_16.html"><strong aria-hidden="true">16.</strong> Using motors</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title"></h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="step_11.html#making-traffic-lights" id="making-traffic-lights"><h2>Making traffic lights</h2></a>
+<p>For this worksheet you'll need a breadboard, three LEDs, a button, a buzzer, and the necessary jumper cables and resistors. You can purchase these individually, or get everything you need in the <a href="https://thepihut.com/products/camjam-edukit">CamJam EduKit</a>.</p>
+<a class="header" href="step_11.html#wiring" id="wiring"><h3>Wiring</h3></a>
+<p>To get started, you'll need to place all the components on the breadboard and connect them to the appropriate GPIO pins on the Raspberry Pi.</p>
+<ul>
+<li>
+<p>First, you need to understand how each component is connected:</p>
+<ul>
+<li>A push button requires 1 ground pin and 1 GPIO pin</li>
+<li>An LED requires 1 ground pin and 1 GPIO pin, with a current limiting resistor</li>
+<li>A buzzer requires 1 ground pin and 1 GPIO pin</li>
+</ul>
+<p>Each component requires its own individual GPIO pin, but components can share a ground pin. We will use the breadboard to enable this.</p>
+</li>
+<li>
+<p>Place the components on the breadboard and connect them to the Raspberry Pi GPIO pins, according to the following diagram:</p>
+<p><img src="images/camjam1wiring.png" alt="GPIO diagram" /></p>
+<p>Note that the row along the long side of the breadboard is connected to a ground pin on the Raspberry Pi, so all the components in that row (which is used as a ground rail) are hence connected to ground.</p>
+</li>
+<li>
+<p>Observe the following table, showing which GPIO pin each component is connected to:</p>
+</li>
+</ul>
+<table><thead><tr><th> Component </th><th align="center"> GPIO pin </th></tr></thead><tbody>
+<tr><td> Button    </td><td align="center"> 21       </td></tr>
+<tr><td> Red LED   </td><td align="center"> 25       </td></tr>
+<tr><td> Amber LED </td><td align="center"> 8        </td></tr>
+<tr><td> Green LED </td><td align="center"> 7        </td></tr>
+<tr><td> Buzzer    </td><td align="center"> 15       </td></tr>
+</tbody></table>
+<a class="header" href="step_11.html#dive-into-python" id="dive-into-python"><h3>Dive into Python</h3></a>
+<p>Open the Python application IDLE and get started by testing out the button.</p>
+<ul>
+<li>
+<p>Open <strong>Python 3</strong> from the main menu:</p>
+<p><img src="images/python3-app-menu.png" alt="Python 3" /></p>
+</li>
+<li>
+<p>Create a new file by clicking <strong>File</strong> &gt; <strong>New File</strong>. This will open up a second window.</p>
+</li>
+<li>
+<p>Save the new file straight away by clicking <strong>File</strong> &gt; <strong>Save</strong>; name the file <code>trafficlights.py</code> and save it in your home folder.</p>
+</li>
+<li>
+<p>Enter the following code:</p>
+<pre><code class="language-python">from gpiozero import Button
+
+button = Button(21)
+
+while True:
+    print(button.is_pressed)
+</code></pre>
+<p>In GPIO Zero, you create an object for each component used. Each component interface must be imported from the <code>gpiozero</code> module, and an instance created on the GPIO pin number to which it is connected.</p>
+</li>
+<li>
+<p>Save and run the code by pressing <code>Ctrl + S</code> and <code>F5</code>.</p>
+</li>
+<li>
+<p>This will bring the original Python window into focus and will be constantly printing <code>False</code>. When you press the button this will switch to <code>True</code>, and when you let go it will return to <code>False</code>.</p>
+<p><code>button.is_pressed</code> is a property of the <code>button</code> object, which provides the state of the button (pressed or not) at any given time.</p>
+</li>
+<li>
+<p>Now return to the code window and modify your <code>while</code> loop to show the following:</p>
+<pre><code class="language-python">while True:
+    if button.is_pressed:
+        print(&quot;Hello&quot;)
+    else:
+        print(&quot;Goodbye&quot;)
+</code></pre>
+</li>
+<li>
+<p>Run the code again and you'll see &quot;Hello&quot; printed when the button is pressed, and &quot;Goodbye&quot; when the button is not pressed.</p>
+</li>
+<li>
+<p>Modify the loop again:</p>
+<pre><code class="language-python">while True:
+    button.wait_for_press()
+    print(&quot;Pressed&quot;)
+    button.wait_for_release()
+    print(&quot;Released&quot;)
+</code></pre>
+</li>
+<li>
+<p>When you run the code this time, nothing will happen until you press the button, when you'll see &quot;Pressed&quot;, then when you let go you'll see &quot;Released&quot;. This will occur each time the button is pressed, but rather than continuously printing one or the other, it only does it once per press.</p>
+</li>
+</ul>
+<a class="header" href="step_11.html#add-an-led" id="add-an-led"><h3>Add an LED</h3></a>
+<p>Now you'll add an LED into the code and use GPIO Zero to allow the button to determine when the LED is lit.</p>
+<ul>
+<li>
+<p>In your code, add to the <code>from gpiozero import...</code> line at the top to also bring in <code>LED</code>:</p>
+<pre><code class="language-python">from gpiozero import Button, LED
+</code></pre>
+</li>
+<li>
+<p>Add a line below <code>button = Button(21)</code> to create an instance of an <code>LED</code> object:</p>
+<pre><code class="language-python">led = LED(25)
+</code></pre>
+</li>
+<li>
+<p>Now modify your <code>while</code> loop to turn the LED on when the button is pressed:</p>
+<pre><code class="language-python">while True:
+    button.wait_for_press()
+    led.on()
+    button.wait_for_release()
+    led.off()
+</code></pre>
+</li>
+<li>
+<p>Run your code and the LED will come on when you press the button. Hold the button down to keep the LED lit.</p>
+</li>
+<li>
+<p>Now swap the <code>on</code> and <code>off</code> lines to reverse the logic:</p>
+<pre><code class="language-python">while True:
+    led.on()
+    button.wait_for_press()
+    led.off()
+    button.wait_for_release()
+</code></pre>
+</li>
+<li>
+<p>Run the code and you'll see the LED stays on until the button is pressed.</p>
+</li>
+<li>
+<p>Now replace <code>led.on()</code> with <code>led.blink()</code>:</p>
+<pre><code class="language-python">while True:
+    led.blink()
+    button.wait_for_press()
+    led.off()
+    button.wait_for_release()
+</code></pre>
+</li>
+<li>
+<p>Run the code and you'll see the LED blink on and off until the button is pressed, at which point it will turn off completely. When the button is released, it will start blinking again.</p>
+</li>
+<li>
+<p>Try adding some parameters to <code>blink</code> to make it blink faster or slower:</p>
+<ul>
+<li><code>led.blink(2, 2)</code> - 2 seconds on, 2 seconds off</li>
+<li><code>led.blink(0.5, 0.5)</code> - half a second on, half a second off</li>
+<li><code>led.blink(0.1, 0.2)</code> - one tenth of a second on, one fifth of a second off</li>
+</ul>
+<p><code>blink</code>'s first two (optional) parameters are <code>on_time</code> and <code>off_time</code>': they both default to 1 second.</p>
+</li>
+</ul>
+<a class="header" href="step_11.html#traffic-lights" id="traffic-lights"><h3>Traffic lights</h3></a>
+<p>You have three LEDs: red, amber, and green. Perfect for traffic lights! There's even a built-in interface for traffic lights in GPIO Zero.</p>
+<ul>
+<li>
+<p>Amend the <code>from gpiozero import...</code> line to replace <code>LED</code> with <code>TrafficLights</code>:</p>
+<pre><code class="language-python">from gpiozero import Button, TrafficLights
+</code></pre>
+</li>
+<li>
+<p>Replace your <code>led = LED(25)</code> line with the following:</p>
+<pre><code class="language-python">lights = TrafficLights(25, 8, 7)
+</code></pre>
+<p>The <code>TrafficLights</code> interface takes three GPIO pin numbers, one for each pin: red, amber, and green (in that order).</p>
+</li>
+<li>
+<p>Now amend your <code>while</code> loop to control the <code>TrafficLights</code> object:</p>
+<pre><code class="language-python">while True:
+    button.wait_for_press()
+    lights.on()
+    button.wait_for_release()
+    lights.off()
+</code></pre>
+<p>The <code>TrafficLights</code> interface is very similar to that of an individual LED: you can use <code>on</code>, <code>off</code>, and <code>blink</code>, all of which control all three lights at once.</p>
+</li>
+<li>
+<p>Try the <code>blink</code> example:</p>
+<pre><code class="language-python">while True:
+    lights.blink()
+    button.wait_for_press()
+    lights.off()
+    button.wait_for_release()
+</code></pre>
+</li>
+</ul>
+<a class="header" href="step_11.html#add-a-buzzer" id="add-a-buzzer"><h3>Add a buzzer</h3></a>
+<p>Now you'll add your buzzer to make some noise.</p>
+<ul>
+<li>
+<p>Add <code>Buzzer</code> to the <code>from gpiozero import...</code> line:</p>
+<pre><code class="language-python">from gpiozero import Button, TrafficLights, Buzzer
+</code></pre>
+</li>
+<li>
+<p>Add a line below your creation of <code>button</code> and <code>lights</code> to add a <code>Buzzer</code> object:</p>
+<pre><code class="language-python">buzzer = Buzzer(15)
+</code></pre>
+</li>
+<li>
+<p><code>Buzzer</code> works exactly like <code>LED</code>, so try adding a <code>buzzer.on()</code> and <code>buzzer.off()</code> into your loop:</p>
+<pre><code class="language-python">while True:
+    lights.on()
+    buzzer.off()
+    button.wait_for_press()
+    lights.off()
+    buzzer.on()
+    button.wait_for_release()
+</code></pre>
+</li>
+<li>
+<p><code>Buzzer</code> has a <code>beep()</code> method which works like <code>LED</code>'s <code>blink</code>. Try it out:</p>
+<pre><code class="language-python">while True:
+    lights.blink()
+    buzzer.beep()
+    button.wait_for_press()
+    lights.off()
+    buzzer.off()
+    button.wait_for_release()
+</code></pre>
+</li>
+</ul>
+<a class="header" href="step_11.html#traffic-lights-sequence" id="traffic-lights-sequence"><h3>Traffic lights sequence</h3></a>
+<p>As well as controlling the whole set of lights together, you can also control each LED individually. With traffic light LEDs, a button and a buzzer, you can create your own traffic lights sequence, complete with pedestrian crossing!</p>
+<ul>
+<li>
+<p>At the top of your file, below <code>from gpiozero import...</code>, add a line to import the <code>sleep</code> function:</p>
+<pre><code class="language-python">from time import sleep
+</code></pre>
+</li>
+<li>
+<p>Modify your loop to perform an automated sequence of LEDs being lit:</p>
+<pre><code class="language-python">while True:
+    lights.green.on()
+    sleep(1)
+    lights.amber.on()
+    sleep(1)
+    lights.red.on()
+    sleep(1)
+    lights.off()
+</code></pre>
+</li>
+<li>
+<p>Add a <code>wait_for_press</code> so that pressing the button initiates the sequence:</p>
+<pre><code class="language-python">while True:
+    button.wait_for_press()
+    lights.green.on()
+    sleep(1)
+    lights.amber.on()
+    sleep(1)
+    lights.red.on()
+    sleep(1)
+    lights.off()
+</code></pre>
+<p>Try some more sequences of your own.</p>
+</li>
+<li>
+<p>Now try creating the full traffic lights sequence:</p>
+<ul>
+<li>Green on</li>
+<li>Amber on</li>
+<li>Red on</li>
+<li>Red and amber on</li>
+<li>Green on</li>
+</ul>
+<p>Be sure to turn the correct lights on and off at the right time, and make sure you use <code>sleep</code> to time the sequence perfectly.</p>
+</li>
+<li>
+<p>Try adding the button for a pedestrian crossing. The button should move the lights to red (not immediately), and give the pedestrians time to cross before moving back to green until the button is pressed again.</p>
+</li>
+<li>
+<p>Now try adding a buzzer to beep quickly to indicate that it is safe to cross, for the benefit of visually impaired pedestrians.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="step_10.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="step_12.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="step_10.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="step_12.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+    </body>
+</html>
