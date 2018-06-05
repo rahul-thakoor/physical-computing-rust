@@ -1,0 +1,5 @@
+[book]
+authors = ["rahul-thakoor"]
+multilingual = false
+src = "src"
+title = "Physical Computing with Rust"
