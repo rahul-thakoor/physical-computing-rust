@@ -3,3 +3,7 @@ authors = ["rahul-thakoor"]
 multilingual = false
 src = "src"
 title = "Physical Computing with Rust"
+
+[output.html]
+additional-css = ["asciinema-player.css"]
+additional-js=["asciinema-player.js"]

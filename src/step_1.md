@@ -20,4 +20,4 @@ This resource covers elements from the following strands of the [Raspberry Pi Di
 - Basic programming concepts
 - Basic understanding of programming in Rust
 
-**It is highly recommended that you complete the first 3 chapters of [_The Rust Programming Language Book_ v2](https://doc.rust-lang.org/book/second-edition/)**
+**It is highly recommended that you complete atleast the first 3 chapters of [_The Rust Programming Language Book_ v2](https://doc.rust-lang.org/book/second-edition/)**

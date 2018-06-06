@@ -26,6 +26,8 @@
 
         <!-- Custom theme -->
         
+        <link rel="stylesheet" href="asciinema-player.css">
+        
 
         
 
@@ -155,9 +157,17 @@
 <p><a href="https://docs.rs/rust_gpiozero/0.1.0/rust_gpiozero/"><code>rust_gpizero</code></a> is a Rust implementation of the GPIO Zero library. It provides a simple interface to GPIO devices on the Raspberry Pi and is ideal for getting started with physical computing using Rust.</p>
 </blockquote>
 <ul>
-<li>
-<p>Use <code>cargo</code> to start a project</p>
-</li>
+<li>Create a file called <code>led.rs</code></li>
+</ul>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+    
+#fn main() {
+#}</code></pre></pre>
+<div>
+<asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
+</div>
+<ul>
 <li>
 <p>You can switch an LED on and off by typing commands directly into the Python interpreter window (also known as the Python <strong>shell</strong>). Let's do this by first importing the GPIO Zero library. You also need to tell the Pi which GPIO pin you are using - in this case pin 17. Next to the chevrons <code>&gt;&gt;&gt;</code>, type:</p>
 <pre><code class="language-python">from gpiozero import LED
@@ -179,7 +189,7 @@ let mut led = LED::new(17);
 // blink the LED
 // on_time: 2 seconds and off_time: 3 seconds
 
-led.blink(2,3);
+led.on();
 
 }
 </code></pre></pre>
@@ -264,6 +274,8 @@ led.blink(2,3);
         <script src="book.js"></script>
 
         <!-- Custom JS script -->
+        
+        <script type="text/javascript" src="asciinema-player.js"></script>
         
 
     </body>

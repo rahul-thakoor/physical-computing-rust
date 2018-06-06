@@ -4,7 +4,15 @@
 
 > [`rust_gpizero`](https://docs.rs/rust_gpiozero/0.1.0/rust_gpiozero/) is a Rust implementation of the GPIO Zero library. It provides a simple interface to GPIO devices on the Raspberry Pi and is ideal for getting started with physical computing using Rust.
 
-+ Use `cargo` to start a project
++ Create a file called `led.rs`
+
+```rust
+    
+```
+
+<div>
+<asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
+</div>
 
 + You can switch an LED on and off by typing commands directly into the Python interpreter window (also known as the Python **shell**). Let's do this by first importing the GPIO Zero library. You also need to tell the Pi which GPIO pin you are using - in this case pin 17. Next to the chevrons `>>>`, type:
 
@@ -30,7 +38,7 @@
     // blink the LED
     // on_time: 2 seconds and off_time: 3 seconds
 
-    led.blink(2,3);
+    led.on();
 
     }
     ```
