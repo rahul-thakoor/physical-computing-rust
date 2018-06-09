@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html" class="active"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li><li><a href="step_11.html"><strong aria-hidden="true">11.</strong> Making traffic lights</a></li><li><a href="step_12.html"><strong aria-hidden="true">12.</strong> Using a light-dependent resistor</a></li><li><a href="step_13.html"><strong aria-hidden="true">13.</strong> Using a PIR sensor</a></li><li><a href="step_14.html"><strong aria-hidden="true">14.</strong> Using an ultrasonic distance sensor</a></li><li><a href="step_15.html"><strong aria-hidden="true">15.</strong> Analogue inputs</a></li><li><a href="step_16.html"><strong aria-hidden="true">16.</strong> Using motors</a></li></ol>
+            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html" class="active"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -157,50 +157,78 @@
 <p><a href="https://docs.rs/rust_gpiozero/0.1.0/rust_gpiozero/"><code>rust_gpizero</code></a> is a Rust implementation of the GPIO Zero library. It provides a simple interface to GPIO devices on the Raspberry Pi and is ideal for getting started with physical computing using Rust.</p>
 </blockquote>
 <ul>
-<li>Create a file called <code>led.rs</code></li>
+<li>Create a project called <code>led</code> with Cargo</li>
 </ul>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-    
-#fn main() {
-#}</code></pre></pre>
-<div>
-<asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
-</div>
-<ul>
-<li>
-<p>You can switch an LED on and off by typing commands directly into the Python interpreter window (also known as the Python <strong>shell</strong>). Let's do this by first importing the GPIO Zero library. You also need to tell the Pi which GPIO pin you are using - in this case pin 17. Next to the chevrons <code>&gt;&gt;&gt;</code>, type:</p>
-<pre><code class="language-python">from gpiozero import LED
-led = LED(17)
+<pre><code class="language-bash">    cargo new led --bin
 </code></pre>
-<p>Press <strong>Enter</strong> on the keyboard.</p>
-</li>
-<li>
-<p>To make the LED switch on, type the following and press <strong>Enter</strong>:</p>
+<p>This creates a new binary executable called <code>step5</code>.
+The <strong>step5</strong> directory has the following structure:</p>
+<pre><code class="language-bash">step5
+├── Cargo.toml
+└── src
+    └── main.rs    
+
+</code></pre>
+<!-- <div>
+<asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
+</div> -->
+<ul>
+<li>You can switch an LED on and off by writing a program. Open the <code>main.rs</code> file in the <code>step5/src/</code> directory using your preferred editor with the following:</li>
+</ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
 
 fn main() {
 
-// Create a new LED attached to Pin 17
-
+// Tell the Pi which GPIO pin you are using
 let mut led = LED::new(17);
 
-// blink the LED
-// on_time: 2 seconds and off_time: 3 seconds
-
+// Make the led switch on
 led.on();
-
 }
 </code></pre></pre>
-</li>
-<li>
-<p>To make it switch off you can type:</p>
-<pre><code class="language-python">led.off()
+<p>Save the changes you made to the <code>main.rs</code> file and exit the editor.</p>
+<ul>
+<li>From your project directory, build your project by entering the following commands:</li>
+</ul>
+<pre><code class="language-bash">cargo check
 </code></pre>
+<ul>
+<li>
+<p>This will check if your program is able to compile.</p>
 </li>
 <li>
-<p>Your LED should switch on and then off again. But that's not all you can do.</p>
+<p>To make the LED switch on, we need to actually compile the project and run it. Run the following command:</p>
+</li>
+</ul>
+<pre><code class="language-bash">cargo run
+</code></pre>
+<ul>
+<li>
+<p>Your LED should switch on.</p>
+</li>
+<li>
+<p>To make it switch off you can edit the <code>src/main.rs</code> again to the following:</p>
+</li>
+</ul>
+<pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
+use rust_gpiozero::*;
+
+fn main() {
+
+// Tell the Pi which GPIO pin you are using
+let mut led = LED::new(17);
+
+// Make the led switch off
+led.off();
+}
+</code></pre></pre>
+<ul>
+<li>
+<p>Run the command <code>cargo run</code> again. Your LED should switch off.</p>
+</li>
+<li>
+<p>But that's not all you can do.</p>
 </li>
 </ul>
 
@@ -215,10 +243,6 @@ led.on();
                         
 
                         
-                            <a rel="next" href="step_6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -232,10 +256,6 @@ led.on();
                     </a>
                 
 
-                
-                    <a href="step_6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
