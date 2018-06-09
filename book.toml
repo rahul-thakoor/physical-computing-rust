@@ -1,8 +1,11 @@
 [book]
-authors = ["rahul-thakoor"]
+authors = ["Rahul Thakoor"]
 multilingual = false
 src = "src"
 title = "Physical Computing with Rust"
+
+[build]
+build-dir = "docs"
 
 [output.html]
 additional-css = ["asciinema-player.css"]

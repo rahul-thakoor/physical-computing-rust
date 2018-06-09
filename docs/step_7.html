@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>What you will need - Physical Computing with Rust</title>
+        <title>Using buttons to get input - Physical Computing with Rust</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html" class="active"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li></ol>
+            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html" class="active"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -149,39 +149,53 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="step_2.html#what-you-will-need" id="what-you-will-need"><h2>What you will need</h2></a>
-<a class="header" href="step_2.html#hardware" id="hardware"><h3>Hardware</h3></a>
-<p>As well as a Raspberry Pi with an SD card and the usual peripherals, you'll also need:</p>
-<table><thead><tr><th align="center">1x Solderless breadboard </th><th align="center"> Male-to-female jumper leads </th><th align="center"> Female-to-female jumper leads </th><th align="center"> Male-to-male jumper leads </th></tr></thead><tbody>
-<tr><td align="center"> <img src="images/breadboard.png" alt="breadboard" /> </td><td align="center"> <img src="images/jumper-male-to-female.png" alt="m to f jumper leads" /> </td><td align="center"> <img src="images/jumper-female-to-female.png" alt="f to f jumper leads" /> </td><td align="center"> <img src="images/jumper-male-to-male.png" alt="m to m jumper leads" /> </td></tr>
-</tbody></table>
-<table><thead><tr><th> 1x Tactile button </th><th> 3x LEDs </th><th> Ultrasonic distance sensor</th><th> Passive infrared motion sensor </th></tr></thead><tbody>
-<tr><td align="center"> <img src="images/tactile-push-button.png" alt="tactile button" /> </td><td align="center"> <img src="images/led.png" alt="LED" /> </td><td align="center"> <img src="images/ultrasonic-distance-sensor.png" alt="ultrasonic distance sensor" /> </td><td align="center"> <img src="images/pir.png" alt="PIR sensor" /> </td></tr>
-</tbody></table>
-<table><thead><tr><th> Light Dependent Resistor </th><th> 2x 5V Micro Metal Gearmotor </th><th> 3x 330Ω Resistor</th><th> 470Ω Resistor </th></tr></thead><tbody>
-<tr><td align="center"> <img src="images/ldr.png" alt="LDR" /> </td><td align="center"> <img src="images/motor.png" alt="motor" /> </td><td align="center"> <img src="images/resistor-330r.png" alt="330 resistor" /> </td><td align="center"> <img src="images/resistor-470r.png" alt="470 resistor" /> </td></tr>
-</tbody></table>
-<table><thead><tr><th> 1x 1μF Capacitor </th><th> Buzzer </th><th> Motor Controller </th><th> Battery Pack </th></tr></thead><tbody>
-<tr><td align="center"> <img src="images/capacitor.png" alt="capacitor" /> </td><td align="center"> <img src="images/piezo-buzzer.png" alt="buzzer" /> </td><td align="center"> <img src="images/motor-controller.png" alt="motor controller" /> </td><td align="center"> <img src="images/battery-pack.png" alt="battery pack" /> </td></tr>
-</tbody></table>
-<a class="header" href="step_2.html#software" id="software"><h3>Software</h3></a>
-<p>You will need to install Rust on your Raspbery Pi.</p>
-<p>Follow the steps <a href="https://doc.rust-lang.org/book/second-edition/ch01-01-installation.html#installing-rustup-on-linux-or-mac">here</a>.</p>
+                        <a class="header" href="step_7.html#using-buttons-to-get-input" id="using-buttons-to-get-input"><h2>Using buttons to get input</h2></a>
+<p>Now you're able to control an output component (an LED), let's connect and control an input component: a button.</p>
+<ul>
+<li>
+<p>Connect a button to another GND pin and GPIO pin 2, like this:</p>
+<p><img src="images/button.png" alt="" /></p>
+</li>
+</ul>
+<ul>
+<li>This time you'll need the <code>Button</code> component, and to tell it that the button is on pin 2. Edit the <code>examples/button.rs</code> file and write the following code in your new file:</li>
+</ul>
+<pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
+use rust_gpiozero::*;
+
+fn main() {
+    // Create a button which is attached to Pin 2
+    let button = Button::new(2);
+}
+</code></pre></pre>
+<ul>
+<li>Now you can get your program to do something when the button is pushed. Add these lines:</li>
+</ul>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+button.wait_for_press();
+println!(&quot;button pressed&quot;);
+#}</code></pre></pre>
+<ul>
+<li>Save with <strong>Ctrl + S</strong> and run the code with:</li>
+</ul>
+<pre><code class="language-bash">cargo run --example button
+</code></pre>
+<ul>
+<li>Press the button and your text will appear.</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="step_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="step_6.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="step_3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -191,15 +205,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="step_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="step_6.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="step_3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 

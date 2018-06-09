@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html" class="active"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li></ol>
+            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html" class="active"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -157,13 +157,14 @@
 <p><a href="https://docs.rs/rust_gpiozero/0.1.0/rust_gpiozero/"><code>rust_gpizero</code></a> is a Rust implementation of the GPIO Zero library. It provides a simple interface to GPIO devices on the Raspberry Pi and is ideal for getting started with physical computing using Rust.</p>
 </blockquote>
 <ul>
-<li>Create a project called <code>led</code> with Cargo</li>
+<li>Get the project code:</li>
 </ul>
-<pre><code class="language-bash">    cargo new led --bin
+<pre><code class="language-bash">git clone https://github.com/rahul-thakoor/pi-phys-comp-rs
+
+cd pi-phys-comp-rs
 </code></pre>
-<p>This creates a new binary executable called <code>step5</code>.
-The <strong>step5</strong> directory has the following structure:</p>
-<pre><code class="language-bash">step5
+<p>This directory contains the scaffolding for the whole lesson.</p>
+<pre><code class="language-bash">pi-phys-comp-rs
 ├── Cargo.toml
 └── src
     └── main.rs    
@@ -173,7 +174,7 @@ The <strong>step5</strong> directory has the following structure:</p>
 <asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
 </div> -->
 <ul>
-<li>You can switch an LED on and off by writing a program. Open the <code>main.rs</code> file in the <code>step5/src/</code> directory using your preferred editor with the following:</li>
+<li>You can switch an LED on and off by writing a program. Open the <code>on.rs</code> file in the <code>examples</code> directory using your preferred editor with the following:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
@@ -187,7 +188,7 @@ let mut led = LED::new(17);
 led.on();
 }
 </code></pre></pre>
-<p>Save the changes you made to the <code>main.rs</code> file and exit the editor.</p>
+<p>Save the changes you made to the <code>on.rs</code> file and exit the editor.</p>
 <ul>
 <li>From your project directory, build your project by entering the following commands:</li>
 </ul>
@@ -201,15 +202,20 @@ led.on();
 <p>To make the LED switch on, we need to actually compile the project and run it. Run the following command:</p>
 </li>
 </ul>
-<pre><code class="language-bash">cargo run
+<pre><code class="language-bash">cargo run --example on
 </code></pre>
 <ul>
-<li>
-<p>Your LED should switch on.</p>
-</li>
-<li>
-<p>To make it switch off you can edit the <code>src/main.rs</code> again to the following:</p>
-</li>
+<li>Your LED should switch on.</li>
+</ul>
+<blockquote>
+<p>The first time you run the program, you might get an error like this:</p>
+<pre><code class="language-bash">thread 'main' panicked at 'Could not set pin to Output mode: Io(Error { repr: Os { code: 13, message: &quot;Permission denied&quot; } })', /checkout/src/libcore/result.rs:916:5
+note: Run with `RUST_BACKTRACE=1` for a backtrace.
+</code></pre>
+<p>Just, run the <code>cargo run --example on</code> command again.</p>
+</blockquote>
+<ul>
+<li>To make it switch off you can edit the <code>examples/off.rs</code> to the following:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
@@ -225,7 +231,7 @@ led.off();
 </code></pre></pre>
 <ul>
 <li>
-<p>Run the command <code>cargo run</code> again. Your LED should switch off.</p>
+<p>Run the command <code>cargo run --example off</code> again. Your LED should switch off.</p>
 </li>
 <li>
 <p>But that's not all you can do.</p>
@@ -243,6 +249,10 @@ led.off();
                         
 
                         
+                            <a rel="next" href="step_6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -256,6 +266,10 @@ led.off();
                     </a>
                 
 
+                
+                    <a href="step_6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 
