@@ -4,7 +4,7 @@
 - [GPIO pins](./step_3.md)
 - [Lighting an LED](./step_4.md)
 - [Switching an LED on and off](./step_5.md)
-- [Flashing an LED](./step_6.md)
+<!-- - [Flashing an LED](./step_6.md)
 - [Using buttons to get input](./step_7.md)
 - [Manually controlling the LED](./step_8.md)
 - [Making a switch](./step_9.md)
@@ -15,3 +15,4 @@
 - [Using an ultrasonic distance sensor](./step_14.md)
 - [Analogue inputs](./step_15.md)
 - [Using motors](./step_16.md)
+ -->

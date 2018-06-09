@@ -4,49 +4,74 @@
 
 > [`rust_gpizero`](https://docs.rs/rust_gpiozero/0.1.0/rust_gpiozero/) is a Rust implementation of the GPIO Zero library. It provides a simple interface to GPIO devices on the Raspberry Pi and is ideal for getting started with physical computing using Rust.
 
-+ Create a file called `led.rs`
++ Create a project called `led` with Cargo
 
-```rust
-    
+```bash
+    cargo new led --bin
+```
+This creates a new binary executable called `step5`.
+The __step5__ directory has the following structure:
+
+```bash
+step5
+├── Cargo.toml
+└── src
+    └── main.rs    
+
 ```
 
-<div>
+<!-- <div>
 <asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
-</div>
+</div> -->
 
-+ You can switch an LED on and off by typing commands directly into the Python interpreter window (also known as the Python **shell**). Let's do this by first importing the GPIO Zero library. You also need to tell the Pi which GPIO pin you are using - in this case pin 17. Next to the chevrons `>>>`, type:
++ You can switch an LED on and off by writing a program. Open the `main.rs` file in the `step5/src/` directory using your preferred editor with the following: 
 
-    ``` python
-    from gpiozero import LED
-    led = LED(17)
-    ```
 
-    Press **Enter** on the keyboard.
+``` rust
+extern crate rust_gpiozero;
+use rust_gpiozero::*;
 
-+ To make the LED switch on, type the following and press **Enter**:
+fn main() {
 
-    ``` rust
-    extern crate rust_gpiozero;
-    use rust_gpiozero::*;
+// Tell the Pi which GPIO pin you are using
+let mut led = LED::new(17);
 
-    fn main() {
+// Make the led switch on
+led.on();
+}
+```
 
-    // Create a new LED attached to Pin 17
+Save the changes you made to the `main.rs` file and exit the editor.
 
-    let mut led = LED::new(17);
++ From your project directory, build your project by entering the following commands:
 
-    // blink the LED
-    // on_time: 2 seconds and off_time: 3 seconds
+``` bash
+cargo check
+```
++ This will check if your program is able to compile.
 
-    led.on();
++ To make the LED switch on, we need to actually compile the project and run it. Run the following command:
 
-    }
-    ```
+``` bash
+cargo run
+```
++ Your LED should switch on.
 
-+ To make it switch off you can type:
++ To make it switch off you can edit the `src/main.rs` again to the following:
 
-    ```python
-    led.off()
-    ```
+``` rust
+extern crate rust_gpiozero;
+use rust_gpiozero::*;
 
-+ Your LED should switch on and then off again. But that's not all you can do.
+fn main() {
+
+// Tell the Pi which GPIO pin you are using
+let mut led = LED::new(17);
+
+// Make the led switch off
+led.off();
+}
+```
++ Run the command `cargo run` again. Your LED should switch off.
+
++ But that's not all you can do.
