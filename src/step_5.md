@@ -43,7 +43,7 @@ led.on();
 }
 ```
 
-Save the changes you made to the `on.rs` file and exit the editor.
+Save the changes you made to the `onoff.rs` file and exit the editor.
 
 + From your project directory, build your project by entering the following commands:
 
@@ -55,7 +55,7 @@ cargo check
 + To make the LED switch on, we need to actually compile the project and run it. Run the following command:
 
 ``` bash
-cargo run --example on
+cargo run --example onoff
 ```
 + Your LED should switch on.
 
@@ -64,9 +64,9 @@ cargo run --example on
 >thread 'main' panicked at 'Could not set pin to Output mode: Io(Error { repr: Os { code: 13, message: "Permission denied" } })', /checkout/src/libcore/result.rs:916:5
 >note: Run with `RUST_BACKTRACE=1` for a backtrace.
 >```
->Just, run the `cargo run --example on` command again.
+>Just, run the `cargo run --example onoff` command again.
 
-+ To make it switch off you can edit the `examples/off.rs` to the following:
++ To make it switch off you can edit the `examples/onoff.rs` to the following:
 
 ``` rust
 extern crate rust_gpiozero;
@@ -81,6 +81,6 @@ let mut led = LED::new(17);
 led.off();
 }
 ```
-+ Run the command `cargo run --example off` again. Your LED should switch off.
++ Run the command `cargo run --example onoff` again. Your LED should switch off.
 
 + But that's not all you can do.

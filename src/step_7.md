@@ -14,8 +14,8 @@ extern crate rust_gpiozero;
 use rust_gpiozero::*;
 
 fn main() {
-    // Create a button which is attached to Pin 2
-    let button = Button::new(2);
+    // Create a button which is attached to Pin 27
+    let button = Button::new(27);
 }
 ```
 
@@ -26,7 +26,7 @@ button.wait_for_press();
 println!("button pressed");
 ```
 
-+ Save with **Ctrl + S** and run the code with: 
++ Save the file and run the code with: 
 
 ```bash
 cargo run --example button

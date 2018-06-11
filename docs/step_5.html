@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html" class="active"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li></ol>
+            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html" class="active"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -188,7 +188,7 @@ let mut led = LED::new(17);
 led.on();
 }
 </code></pre></pre>
-<p>Save the changes you made to the <code>on.rs</code> file and exit the editor.</p>
+<p>Save the changes you made to the <code>onoff.rs</code> file and exit the editor.</p>
 <ul>
 <li>From your project directory, build your project by entering the following commands:</li>
 </ul>
@@ -202,7 +202,7 @@ led.on();
 <p>To make the LED switch on, we need to actually compile the project and run it. Run the following command:</p>
 </li>
 </ul>
-<pre><code class="language-bash">cargo run --example on
+<pre><code class="language-bash">cargo run --example onoff
 </code></pre>
 <ul>
 <li>Your LED should switch on.</li>
@@ -212,10 +212,10 @@ led.on();
 <pre><code class="language-bash">thread 'main' panicked at 'Could not set pin to Output mode: Io(Error { repr: Os { code: 13, message: &quot;Permission denied&quot; } })', /checkout/src/libcore/result.rs:916:5
 note: Run with `RUST_BACKTRACE=1` for a backtrace.
 </code></pre>
-<p>Just, run the <code>cargo run --example on</code> command again.</p>
+<p>Just, run the <code>cargo run --example onoff</code> command again.</p>
 </blockquote>
 <ul>
-<li>To make it switch off you can edit the <code>examples/off.rs</code> to the following:</li>
+<li>To make it switch off you can edit the <code>examples/onoff.rs</code> to the following:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
@@ -231,7 +231,7 @@ led.off();
 </code></pre></pre>
 <ul>
 <li>
-<p>Run the command <code>cargo run --example off</code> again. Your LED should switch off.</p>
+<p>Run the command <code>cargo run --example onoff</code> again. Your LED should switch off.</p>
 </li>
 <li>
 <p>But that's not all you can do.</p>
@@ -287,6 +287,21 @@ led.off();
             }
         </script>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

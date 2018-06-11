@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html" class="active"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li></ol>
+            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html" class="active"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -164,8 +164,8 @@
 use rust_gpiozero::*;
 
 fn main() {
-    // Create a button which is attached to Pin 2
-    let button = Button::new(2);
+    // Create a button which is attached to Pin 27
+    let button = Button::new(27);
 }
 </code></pre></pre>
 <ul>
@@ -178,7 +178,7 @@ button.wait_for_press();
 println!(&quot;button pressed&quot;);
 #}</code></pre></pre>
 <ul>
-<li>Save with <strong>Ctrl + S</strong> and run the code with:</li>
+<li>Save the file and run the code with:</li>
 </ul>
 <pre><code class="language-bash">cargo run --example button
 </code></pre>
@@ -197,6 +197,10 @@ println!(&quot;button pressed&quot;);
                         
 
                         
+                            <a rel="next" href="step_8.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -210,6 +214,10 @@ println!(&quot;button pressed&quot;);
                     </a>
                 
 
+                
+                    <a href="step_8.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 
@@ -227,6 +235,21 @@ println!(&quot;button pressed&quot;);
             }
         </script>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

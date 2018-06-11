@@ -11,7 +11,7 @@ With the help of the `sleep` function and a little loop, you can make the LED fl
 ```rust
 extern crate rust_gpiozero;
 use rust_gpiozero::*;
-use std::thread;
+use std::thread::sleep;
 use std::time::Duration;
 
 fn main() {
@@ -24,13 +24,13 @@ loop{
     led.on();
 
     // Let the LED stay on for one second
-    thread::sleep(Duration::from_secs(1));
+    sleep(Duration::from_secs(1));
 
     // Make the led switch off
     led.off();
 
     // Let the LED stay off for one second
-    thread::sleep(Duration::from_secs(1));
+    sleep(Duration::from_secs(1));
     }
 }
 ```

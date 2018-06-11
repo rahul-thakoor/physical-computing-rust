@@ -2,23 +2,30 @@
 
 You can now combine your two programs written so far to control the LED using the button.
 
-+ Create a new file by clicking **File > New file**.
++ Edit the `examples/gpio_control.rs` file to add the following code:
 
-+ Save the new file by clicking **File > Save**. Save the file as `gpio_control.py`.
+```rust
+extern crate rust_gpiozero;
+use rust_gpiozero::*;
+use std::thread::sleep;
+use std::time::Duration;
 
-+ Now write the following code:
+fn main() {
 
-    ```python
-    from gpiozero import LED, Button
-    from time import sleep
+// Tell the Pi which GPIO pin you are using
+let mut led = LED::new(17);
 
-    led = LED(17)
-    button = Button(2)
+// Create a button which is attached to Pin 27
+let button = Button::new(27);
 
-    button.wait_for_press()
-    led.on()
-    sleep(3)
-    led.off()
-    ```
+
+button.wait_for_press();
+led.on();
+sleep(Duration::from_secs(3));
+led.off();
+
+}
+
+```
 
 + Save and run your program. When you push the button the LED should come on for three seconds.
