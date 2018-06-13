@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li></ol>
+            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -342,20 +342,21 @@ loop{
 <a class="header" href="print.html#using-buttons-to-get-input" id="using-buttons-to-get-input"><h2>Using buttons to get input</h2></a>
 <p>Now you're able to control an output component (an LED), let's connect and control an input component: a button.</p>
 <ul>
-<li>
-<p>Connect a button to another GND pin and GPIO pin 2, like this:</p>
-<p><img src="images/button.png" alt="" /></p>
-</li>
+<li>Connect a button to another GND pin and GPIO pin 2, like this:</li>
 </ul>
+<blockquote>
+<p>Todo: Replace image
+<img src="images/button.png" alt="" /></p>
+</blockquote>
 <ul>
-<li>This time you'll need the <code>Button</code> component, and to tell it that the button is on pin 2. Edit the <code>examples/button.rs</code> file and write the following code in your new file:</li>
+<li>This time you'll need the <code>Button</code> component, and to tell it that the button is on pin 22. Edit the <code>examples/button.rs</code> file and write the following code in your new file:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
 
 fn main() {
-    // Create a button which is attached to Pin 27
-    let button = Button::new(27);
+    // Create a button which is attached to Pin 22
+    let button = Button::new(22);
 }
 </code></pre></pre>
 <ul>
@@ -390,8 +391,8 @@ fn main() {
 // Tell the Pi which GPIO pin you are using
 let mut led = LED::new(17);
 
-// Create a button which is attached to Pin 27
-let button = Button::new(27);
+// Create a button which is attached to Pin 22
+let button = Button::new(22);
 
 
 button.wait_for_press();
@@ -409,7 +410,7 @@ led.off();
 <p>With a switch, a single press and release on the button would turn the LED on, and another press and release would turn it off again.</p>
 <ul>
 <li>
-<p>Modify your code so that it looks like this:</p>
+<p>Modify the <code>examples/button.rs</code> file so that it looks like this:</p>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
 use std::thread::sleep;
@@ -421,8 +422,8 @@ fn main() {
 // Tell the Pi which GPIO pin you are using
 let mut led = LED::new(17);
 
-// Create a button which is attached to Pin 27
-let button = Button::new(27);
+// Create a button which is attached to Pin 22
+let button = Button::new(22);
 
 loop{
     button.wait_for_press();
@@ -459,6 +460,63 @@ pause()
 <p>Save and run the program. Now when the button is pressed, the LED will light up. It will turn off again when the button is released.</p>
 </li>
 </ul>
+<a class="header" href="print.html#using-a-buzzer" id="using-a-buzzer"><h2>Using a buzzer</h2></a>
+<p>There are two main types of buzzer: <em>active</em> and <em>passive</em>.</p>
+<p>A <em>passive</em> buzzer emits a tone when a voltage is applied across it. It also requires a specific signal to generate a variety of tones. The <em>active</em> buzzers are a lot simpler to use, so these are covered here.</p>
+<a class="header" href="print.html#connecting-a-buzzer" id="connecting-a-buzzer"><h3>Connecting a buzzer</h3></a>
+<p>An <em>active</em> buzzer can be connected just like an LED, but as they are a little more robust, you won't be needing a resistor to protect them.</p>
+<p>Set up the circuit as shown below:</p>
+<p><img src="images/buzzer-circuit.png" alt="buzzer" /></p>
+<ul>
+<li>
+<p>Modify the <code>examples/buzzer.rs</code> file:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
+use rust_gpiozero::*;
+use std::thread::sleep;
+use std::time::Duration;
+
+fn main() {
+
+// Tell the Pi which GPIO pin you are using
+let mut buzzer = Buzzer::new(17);    
+
+}
+</code></pre></pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>In <code>rust_gpiozero</code>, a <code>Buzzer</code> works exactly like an <code>LED</code>, so try adding a <code>buzzer.on();</code> and <code>buzzer.off();</code> into your loop:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    // Make the buzzer switch on
+    buzzer.on();
+
+    // Wait for one second
+    sleep(Duration::from_secs(1));
+
+    // Make the buzzer switch off
+    buzzer.off();
+
+    // Wait for one second
+    sleep(Duration::from_secs(1));
+    }
+
+#}</code></pre></pre>
+</li>
+<li>
+<p>A <code>Buzzer</code> has a <code>beep(on_time,off_time)</code> method which works like an <code>LED</code>'s <code>blink</code>. Try it out:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+    // Let the buzzer beep
+    buzzer.beep(1,1);
+
+#}</code></pre></pre>
+</li>
+</ul>
 
                     </main>
 
@@ -493,21 +551,6 @@ pause()
             }
         </script>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

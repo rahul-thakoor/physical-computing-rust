@@ -8,8 +8,8 @@
 - [Using buttons to get input](./step_7.md)
 - [Manually controlling the LED](./step_8.md)
 - [Making a switch](./step_9.md)
-<!--
 - [Using a buzzer](./step_10.md)
+<!--
 - [Making traffic lights](./step_11.md)
 - [Using a light-dependent resistor](./step_12.md)
 - [Using a PIR sensor](./step_13.md)

@@ -15,8 +15,8 @@ fn main() {
 // Tell the Pi which GPIO pin you are using
 let mut led = LED::new(17);
 
-// Create a button which is attached to Pin 27
-let button = Button::new(27);
+// Create a button which is attached to Pin 22
+let button = Button::new(22);
 
 
 button.wait_for_press();

@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html" class="active"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li></ol>
+            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html" class="active"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -152,20 +152,21 @@
                         <a class="header" href="step_7.html#using-buttons-to-get-input" id="using-buttons-to-get-input"><h2>Using buttons to get input</h2></a>
 <p>Now you're able to control an output component (an LED), let's connect and control an input component: a button.</p>
 <ul>
-<li>
-<p>Connect a button to another GND pin and GPIO pin 2, like this:</p>
-<p><img src="images/button.png" alt="" /></p>
-</li>
+<li>Connect a button to another GND pin and GPIO pin 2, like this:</li>
 </ul>
+<blockquote>
+<p>Todo: Replace image
+<img src="images/button.png" alt="" /></p>
+</blockquote>
 <ul>
-<li>This time you'll need the <code>Button</code> component, and to tell it that the button is on pin 2. Edit the <code>examples/button.rs</code> file and write the following code in your new file:</li>
+<li>This time you'll need the <code>Button</code> component, and to tell it that the button is on pin 22. Edit the <code>examples/button.rs</code> file and write the following code in your new file:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
 
 fn main() {
-    // Create a button which is attached to Pin 27
-    let button = Button::new(27);
+    // Create a button which is attached to Pin 22
+    let button = Button::new(22);
 }
 </code></pre></pre>
 <ul>
@@ -235,21 +236,6 @@ println!(&quot;button pressed&quot;);
             }
         </script>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

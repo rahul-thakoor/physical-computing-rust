@@ -2,7 +2,7 @@
 
 With a switch, a single press and release on the button would turn the LED on, and another press and release would turn it off again.
 
-+ Modify your code so that it looks like this:
++ Modify the `examples/button.rs` file so that it looks like this:
 
     ```rust
     extern crate rust_gpiozero;
@@ -16,8 +16,8 @@ With a switch, a single press and release on the button would turn the LED on, a
     // Tell the Pi which GPIO pin you are using
     let mut led = LED::new(17);
 
-    // Create a button which is attached to Pin 27
-    let button = Button::new(27);
+    // Create a button which is attached to Pin 22
+    let button = Button::new(22);
 
     loop{
         button.wait_for_press();
