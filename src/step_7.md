@@ -2,10 +2,9 @@
 
 Now you're able to control an output component (an LED), let's connect and control an input component: a button.
 
-+ Connect a button to another GND pin and GPIO pin 2, like this:
++ Connect a button to another GND pin and GPIO pin 22, like this:
 
-> Todo: Replace image
-    ![](images/button.png)
+    ![Image made using Fritzing](images/button_rs.png)
 
 
 + This time you'll need the `Button` component, and to tell it that the button is on pin 22. Edit the `examples/button.rs` file and write the following code in your new file:
