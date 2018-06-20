@@ -9,10 +9,13 @@ There are 40 pins on the Raspberry Pi (26 pins on early models), and they provid
 If you have a RasPiO pin label, it can help to identify what each pin is used for. Make sure your pin label is placed with the keyring hole facing the USB ports, pointed outwards.
 
 ![](images/raspio-ports.jpg)
+Image source: [Raspberry Pi Foundation](https://www.raspberrypi.org/)
 
 If you don't have a pin label, then this guide can help you to identify the pin numbers:
 
 ![](images/pinout.png)
+
+Image source: [Raspberry Pi Foundation](https://www.raspberrypi.org/)
 
 You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:
 

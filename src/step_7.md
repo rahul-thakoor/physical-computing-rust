@@ -26,6 +26,8 @@ button.wait_for_press();
 println!("button pressed");
 ```
 
+<!-- todo: Add full script here -->
+
 + Save the file and run the code with: 
 
 ```bash

@@ -26,7 +26,7 @@ pi-phys-comp-rs
 <asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
 </div> -->
 
-+ You can switch an LED on and off by writing a program. Open the `on.rs` file in the `examples` directory using your preferred editor with the following: 
++ You can switch an LED on and off by writing a program. Open the `onoff.rs` file in the `examples` directory using your preferred editor with the following: 
 
 
 ``` rust
@@ -35,11 +35,11 @@ use rust_gpiozero::*;
 
 fn main() {
 
-// Tell the Pi which GPIO pin you are using
-let mut led = LED::new(17);
+    // Tell the Pi which GPIO pin you are using
+    let mut led = LED::new(17);
 
-// Make the led switch on
-led.on();
+    // Make the led switch on
+    led.on();
 }
 ```
 

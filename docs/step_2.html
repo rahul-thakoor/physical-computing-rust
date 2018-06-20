@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html" class="active"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li></ol>
+            <ol class="chapter"><li class="affix"><a href="step_0.html">Physical Computing with Rust</a></li><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> introduction</a></li><li><a href="step_2.html" class="active"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li><li><a href="step_11.html"><strong aria-hidden="true">11.</strong> Making traffic lights</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -151,7 +151,36 @@
                     <main>
                         <a class="header" href="step_2.html#what-you-will-need" id="what-you-will-need"><h2>What you will need</h2></a>
 <a class="header" href="step_2.html#hardware" id="hardware"><h3>Hardware</h3></a>
-<p>As well as a Raspberry Pi with an SD card and the usual peripherals, you'll also need:</p>
+<p>You will need a Raspberry Pi with an SD card and the usual peripherals. You will also need the following components for partilular steps:</p>
+<ul>
+<li>
+<p>Step 4: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor</p>
+</li>
+<li>
+<p>Step 5: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor</p>
+</li>
+<li>
+<p>Step 6: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor</p>
+</li>
+<li>
+<p>Step 7: 1x Tactile button, Male-to-female jumper leads, 1x Solderless breadboard</p>
+</li>
+<li>
+<p>Step 8: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor, 1x Tactile button, Male-to-female jumper leads</p>
+</li>
+<li>
+<p>Step 9: 1x Tactile button, Male-to-female jumper leads</p>
+</li>
+<li>
+<p>Step 10: 1x Buzzer, Male-to-female jumper leads, 1x Solderless breadboard</p>
+</li>
+<li>
+<p>Step 11: 3x LEDs, 3x 330Ω Resistors, Buzzer, Male-to-female jumper leads, 1x Tactile button, 1x Solderless breadboard</p>
+</li>
+</ul>
+<blockquote>
+<p>Here is a complete list of components required for <em>Physical Computing with Python</em></p>
+</blockquote>
 <table><thead><tr><th align="center">1x Solderless breadboard </th><th align="center"> Male-to-female jumper leads </th><th align="center"> Female-to-female jumper leads </th><th align="center"> Male-to-male jumper leads </th></tr></thead><tbody>
 <tr><td align="center"> <img src="images/breadboard.png" alt="breadboard" /> </td><td align="center"> <img src="images/jumper-male-to-female.png" alt="m to f jumper leads" /> </td><td align="center"> <img src="images/jumper-female-to-female.png" alt="f to f jumper leads" /> </td><td align="center"> <img src="images/jumper-male-to-male.png" alt="m to m jumper leads" /> </td></tr>
 </tbody></table>
@@ -164,6 +193,7 @@
 <table><thead><tr><th> 1x 1μF Capacitor </th><th> Buzzer </th><th> Motor Controller </th><th> Battery Pack </th></tr></thead><tbody>
 <tr><td align="center"> <img src="images/capacitor.png" alt="capacitor" /> </td><td align="center"> <img src="images/piezo-buzzer.png" alt="buzzer" /> </td><td align="center"> <img src="images/motor-controller.png" alt="motor controller" /> </td><td align="center"> <img src="images/battery-pack.png" alt="battery pack" /> </td></tr>
 </tbody></table>
+<p>Images source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <a class="header" href="step_2.html#software" id="software"><h3>Software</h3></a>
 <p>You will need to install Rust on your Raspbery Pi.</p>
 <p>Follow the steps <a href="https://doc.rust-lang.org/book/second-edition/ch01-01-installation.html#installing-rustup-on-linux-or-mac">here</a>.</p>

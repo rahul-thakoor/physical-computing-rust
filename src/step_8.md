@@ -2,7 +2,7 @@
 
 You can now combine your two programs written so far to control the LED using the button.
 
-+ Edit the `examples/gpio_control.rs` file to add the following code:
++ Edit the `examples/led_button.rs` file to add the following code:
 
 ```rust
 extern crate rust_gpiozero;

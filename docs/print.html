@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li></ol>
+            <ol class="chapter"><li class="affix"><a href="step_0.html">Physical Computing with Rust</a></li><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> introduction</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li><li><a href="step_11.html"><strong aria-hidden="true">11.</strong> Making traffic lights</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -149,9 +149,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="print.html#physical-computing-with-rust" id="physical-computing-with-rust"><h1>Physical Computing with Rust</h1></a>
-<a class="header" href="print.html#acknowledgement" id="acknowledgement"><h3>Acknowledgement</h3></a>
-<p>This guide is based on <a href="https://projects.raspberrypi.org/en/projects/physical-computing"><em>Physical Computing with Python</em></a> by the <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
+                        <a class="header" href="print.html#acknowledgement" id="acknowledgement"><h3>Acknowledgement</h3></a>
+<p>This guide is an adapted version of the <a href="https://projects.raspberrypi.org/en/projects/physical-computing"><em>Physical Computing with Python</em></a> by the <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a>.</p>
+<a class="header" href="print.html#what-you-already-need-to-know" id="what-you-already-need-to-know"><h3>What you already need to know</h3></a>
+<ul>
+<li>Basic programming concepts</li>
+<li>Basic understanding of programming in Rust</li>
+</ul>
+<p><strong>It is highly recommended that you complete atleast the first 3 chapters of <a href="https://doc.rust-lang.org/book/second-edition/"><em>The Rust Programming Language Book</em> v2</a></strong></p>
+<a class="header" href="print.html#caveats" id="caveats"><h3>Caveats</h3></a>
+<p>The guide is based on the <code>rust_gpiozero</code> crate which is still in development. This guide does not currently implement all of the steps in the   original <em>Physical Computing with Python</em> guide.</p>
+<p>Feedback and pull requests are welcome!</p>
+<a class="header" href="print.html#introduction" id="introduction"><h1>Introduction</h1></a>
 <a class="header" href="print.html#what-you-will-do" id="what-you-will-do"><h3>What you will do</h3></a>
 <p>Learn how to use the GPIO pins on your Raspberry Pi to interface with electronic components, such as LEDs and PIRs using the Rust programming language.</p>
 <a class="header" href="print.html#what-you-will-learn" id="what-you-will-learn"><h3>What you will learn</h3></a>
@@ -160,15 +169,38 @@
 <li><a href="https://www.raspberrypi.org/curriculum/programming/creator">Use basic programming constructs to create simple programs</a></li>
 <li><a href="https://www.raspberrypi.org/curriculum/physical-computing/creator">Use basic digital, analogue, and electromechanical components</a></li>
 </ul>
-<a class="header" href="print.html#what-you-already-need-to-know" id="what-you-already-need-to-know"><h3>What you already need to know</h3></a>
-<ul>
-<li>Basic programming concepts</li>
-<li>Basic understanding of programming in Rust</li>
-</ul>
-<p><strong>It is highly recommended that you complete atleast the first 3 chapters of <a href="https://doc.rust-lang.org/book/second-edition/"><em>The Rust Programming Language Book</em> v2</a></strong></p>
 <a class="header" href="print.html#what-you-will-need" id="what-you-will-need"><h2>What you will need</h2></a>
 <a class="header" href="print.html#hardware" id="hardware"><h3>Hardware</h3></a>
-<p>As well as a Raspberry Pi with an SD card and the usual peripherals, you'll also need:</p>
+<p>You will need a Raspberry Pi with an SD card and the usual peripherals. You will also need the following components for partilular steps:</p>
+<ul>
+<li>
+<p>Step 4: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor</p>
+</li>
+<li>
+<p>Step 5: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor</p>
+</li>
+<li>
+<p>Step 6: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor</p>
+</li>
+<li>
+<p>Step 7: 1x Tactile button, Male-to-female jumper leads, 1x Solderless breadboard</p>
+</li>
+<li>
+<p>Step 8: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor, 1x Tactile button, Male-to-female jumper leads</p>
+</li>
+<li>
+<p>Step 9: 1x Tactile button, Male-to-female jumper leads</p>
+</li>
+<li>
+<p>Step 10: 1x Buzzer, Male-to-female jumper leads, 1x Solderless breadboard</p>
+</li>
+<li>
+<p>Step 11: 3x LEDs, 3x 330Ω Resistors, Buzzer, Male-to-female jumper leads, 1x Tactile button, 1x Solderless breadboard</p>
+</li>
+</ul>
+<blockquote>
+<p>Here is a complete list of components required for <em>Physical Computing with Python</em></p>
+</blockquote>
 <table><thead><tr><th align="center">1x Solderless breadboard </th><th align="center"> Male-to-female jumper leads </th><th align="center"> Female-to-female jumper leads </th><th align="center"> Male-to-male jumper leads </th></tr></thead><tbody>
 <tr><td align="center"> <img src="images/breadboard.png" alt="breadboard" /> </td><td align="center"> <img src="images/jumper-male-to-female.png" alt="m to f jumper leads" /> </td><td align="center"> <img src="images/jumper-female-to-female.png" alt="f to f jumper leads" /> </td><td align="center"> <img src="images/jumper-male-to-male.png" alt="m to m jumper leads" /> </td></tr>
 </tbody></table>
@@ -181,6 +213,7 @@
 <table><thead><tr><th> 1x 1μF Capacitor </th><th> Buzzer </th><th> Motor Controller </th><th> Battery Pack </th></tr></thead><tbody>
 <tr><td align="center"> <img src="images/capacitor.png" alt="capacitor" /> </td><td align="center"> <img src="images/piezo-buzzer.png" alt="buzzer" /> </td><td align="center"> <img src="images/motor-controller.png" alt="motor controller" /> </td><td align="center"> <img src="images/battery-pack.png" alt="battery pack" /> </td></tr>
 </tbody></table>
+<p>Images source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <a class="header" href="print.html#software" id="software"><h3>Software</h3></a>
 <p>You will need to install Rust on your Raspbery Pi.</p>
 <p>Follow the steps <a href="https://doc.rust-lang.org/book/second-edition/ch01-01-installation.html#installing-rustup-on-linux-or-mac">here</a>.</p>
@@ -189,9 +222,11 @@
 <p>The GPIO pins allow the Raspberry Pi to control and monitor the outside world by being connected to electronic circuits. The Pi is able to control LEDs, turning them on or off, run motors, and many other things. It's also able to detect whether a switch has been pressed, the temperature, and light. We refer to this as physical computing.</p>
 <p>There are 40 pins on the Raspberry Pi (26 pins on early models), and they provide various different functions.</p>
 <p>If you have a RasPiO pin label, it can help to identify what each pin is used for. Make sure your pin label is placed with the keyring hole facing the USB ports, pointed outwards.</p>
-<p><img src="images/raspio-ports.jpg" alt="" /></p>
+<p><img src="images/raspio-ports.jpg" alt="" />
+Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <p>If you don't have a pin label, then this guide can help you to identify the pin numbers:</p>
 <p><img src="images/pinout.png" alt="" /></p>
+<p>Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <p>You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:</p>
 <table><thead><tr><th>   </th><th>   </th><th>   </th></tr></thead><tbody>
 <tr><td> 3V3 </td><td> 3.3 volts </td><td> Anything connected to these pins will always get 3.3V of power </td></tr>
@@ -206,9 +241,11 @@
 <p>LEDs are delicate little things. If you put too much current through them they will pop (sometimes quite spectacularly). To limit the current going through the LED, you should always use a resistor in series with it.</p>
 <p>Try connecting the long leg of an LED to the Pi's 3V3 and the short leg to a GND pin. The resistor can be anything over about 50Ω.</p>
 <p><img src="images/led-3v3.png" alt="" /></p>
+<p>Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <p>The LED should light up. It will always be on, because it's connected to a 3V3 pin, which is itself always on.</p>
 <p>Now try moving it from 3V3 to GPIO pin 17:</p>
 <p><img src="images/led-gpio17.png" alt="" /></p>
+<p>Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <p>The LED should now turn off, but now it's on a GPIO pin, and can therefore be controlled by code.</p>
 <a class="header" href="print.html#switching-an-led-on-and-off" id="switching-an-led-on-and-off"><h2>Switching an LED on and off</h2></a>
 <blockquote>
@@ -235,18 +272,18 @@ cd pi-phys-comp-rs
 <asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
 </div> -->
 <ul>
-<li>You can switch an LED on and off by writing a program. Open the <code>on.rs</code> file in the <code>examples</code> directory using your preferred editor with the following:</li>
+<li>You can switch an LED on and off by writing a program. Open the <code>onoff.rs</code> file in the <code>examples</code> directory using your preferred editor with the following:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
 
 fn main() {
 
-// Tell the Pi which GPIO pin you are using
-let mut led = LED::new(17);
+    // Tell the Pi which GPIO pin you are using
+    let mut led = LED::new(17);
 
-// Make the led switch on
-led.on();
+    // Make the led switch on
+    led.on();
 }
 </code></pre></pre>
 <p>Save the changes you made to the <code>onoff.rs</code> file and exit the editor.</p>
@@ -300,9 +337,6 @@ led.off();
 </ul>
 <a class="header" href="print.html#flashing-an-led" id="flashing-an-led"><h2>Flashing an LED</h2></a>
 <p>With the help of the <code>sleep</code> function and a little loop, you can make the LED flash.</p>
-<ul>
-<li>Create a new binary executable project( called <code>flash</code> here).</li>
-</ul>
 <ul>
 <li>Edit the <code>examples/flash.rs</code> file in an editor with the following code:</li>
 </ul>
@@ -367,6 +401,7 @@ fn main() {
 button.wait_for_press();
 println!(&quot;button pressed&quot;);
 #}</code></pre></pre>
+<!-- todo: Add full script here -->
 <ul>
 <li>Save the file and run the code with:</li>
 </ul>
@@ -378,7 +413,7 @@ println!(&quot;button pressed&quot;);
 <a class="header" href="print.html#manually-controlling-the-led" id="manually-controlling-the-led"><h2>Manually controlling the LED</h2></a>
 <p>You can now combine your two programs written so far to control the LED using the button.</p>
 <ul>
-<li>Edit the <code>examples/gpio_control.rs</code> file to add the following code:</li>
+<li>Edit the <code>examples/led_button.rs</code> file to add the following code:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
@@ -465,7 +500,8 @@ pause()
 <a class="header" href="print.html#connecting-a-buzzer" id="connecting-a-buzzer"><h3>Connecting a buzzer</h3></a>
 <p>An <em>active</em> buzzer can be connected just like an LED, but as they are a little more robust, you won't be needing a resistor to protect them.</p>
 <p>Set up the circuit as shown below:</p>
-<p><img src="images/buzzer-circuit.png" alt="buzzer" /></p>
+<p><img src="images/buzzer-circuit.png" alt="buzzer" />
+Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <ul>
 <li>
 <p>Modify the <code>examples/buzzer.rs</code> file:</p>
@@ -514,6 +550,306 @@ loop{
     buzzer.beep(1,1);
 
 #}</code></pre></pre>
+</li>
+</ul>
+<a class="header" href="print.html#making-traffic-lights" id="making-traffic-lights"><h2>Making traffic lights</h2></a>
+<p>For this worksheet you'll need a breadboard, three LEDs, a button, a buzzer, and the necessary jumper cables and resistors. You can purchase these individually, or get everything you need in the <a href="https://thepihut.com/products/camjam-edukit">CamJam EduKit</a>.</p>
+<a class="header" href="print.html#wiring" id="wiring"><h3>Wiring</h3></a>
+<p>To get started, you'll need to place all the components on the breadboard and connect them to the appropriate GPIO pins on the Raspberry Pi.</p>
+<ul>
+<li>
+<p>First, you need to understand how each component is connected:</p>
+<ul>
+<li>A push button requires 1 ground pin and 1 GPIO pin</li>
+<li>An LED requires 1 ground pin and 1 GPIO pin, with a current limiting resistor</li>
+<li>A buzzer requires 1 ground pin and 1 GPIO pin</li>
+</ul>
+<p>Each component requires its own individual GPIO pin, but components can share a ground pin. We will use the breadboard to enable this.</p>
+</li>
+<li>
+<p>Place the components on the breadboard and connect them to the Raspberry Pi GPIO pins, according to the following diagram:</p>
+<p><img src="images/traffic-light-rs.png" alt="GPIO diagram" /></p>
+<p>Note that the row along the long side of the breadboard is connected to a ground pin on the Raspberry Pi, so all the components in that row (which is used as a ground rail) are hence connected to ground.</p>
+</li>
+<li>
+<p>Observe the following table, showing which GPIO pin each component is connected to:</p>
+</li>
+</ul>
+<table><thead><tr><th> Component </th><th align="center"> GPIO pin </th></tr></thead><tbody>
+<tr><td> Button    </td><td align="center"> 21       </td></tr>
+<tr><td> Red LED   </td><td align="center"> 25       </td></tr>
+<tr><td> Amber LED </td><td align="center"> 8        </td></tr>
+<tr><td> Green LED </td><td align="center"> 7        </td></tr>
+<tr><td> Buzzer    </td><td align="center"> 15       </td></tr>
+</tbody></table>
+<a class="header" href="print.html#dive-into-rust" id="dive-into-rust"><h3>Dive into Rust</h3></a>
+<p>Open the Python application IDLE and get started by testing out the button.</p>
+<ul>
+<li>
+<p>Open  the <code>examples/trafficlights.rs</code> and enter the following code:</p>
+<pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
+use rust_gpiozero::*;
+
+fn main() {
+
+// Create a button which is attached to Pin 22
+let button = Button::new(22);
+
+loop{
+    println!(&quot;{}&quot;,button.is_active());
+
+    }
+}
+</code></pre></pre>
+</li>
+<li>
+<p>Run the program using the command:</p>
+<pre><code class="language-bash">cargo run --example trafficlights
+</code></pre>
+</li>
+<li>
+<p>This will constantly print <code>false</code>. When you press the button this will switch to <code>true</code>, and when you let go it will return to <code>false</code>.</p>
+<p><code>button.is_active()</code> is a method of the <code>button</code> instance, which provides the state of the button (pressed or not) at any given time.</p>
+</li>
+<li>
+<p>Now edit the code again and modify your <code>loop</code> to the following:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    if(button.is_active()){
+        println!(&quot;Hello&quot;);      
+    }        
+    else{
+        println!(&quot;Goodbye&quot;);
+    }
+}
+#}</code></pre></pre>
+</li>
+<li>
+<p>Run the code again and you'll see &quot;Hello&quot; printed when the button is pressed, and &quot;Goodbye&quot; when the button is not pressed.</p>
+</li>
+<li>
+<p>Modify the loop again:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    button.wait_for_press();
+    println!(&quot;Pressed&quot;);
+    button.wait_for_release();
+    println!(&quot;Released&quot;);
+}
+#}</code></pre></pre>
+</li>
+<li>
+<p>When you run the code this time, nothing will happen until you press the button, when you'll see &quot;Pressed&quot;, then when you let go you'll see &quot;Released&quot;. This will occur each time the button is pressed, but rather than continuously printing one or the other, it only does it once per press.</p>
+</li>
+</ul>
+<a class="header" href="print.html#add-an-led" id="add-an-led"><h3>Add an LED</h3></a>
+<p>Now you'll add an LED into the code and use GPIO Zero to allow the button to determine when the LED is lit.</p>
+<ul>
+<li>
+<p>Add a line below <code>let button = Button::new(22);</code> to create an instance of an <code>LED</code>:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let mut led = LED::new(25);
+#}</code></pre></pre>
+</li>
+<li>
+<p>Now modify your <code>loop</code> to turn the LED on when the button is pressed:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    button.wait_for_press();
+    led.on();
+    button.wait_for_release();
+    led.off();
+}
+#}</code></pre></pre>
+</li>
+<li>
+<p>Run your code and the LED will come on when you press the button. Hold the button down to keep the LED lit.</p>
+</li>
+<li>
+<p>Now swap the <code>on</code> and <code>off</code> lines to reverse the logic:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    led.on();
+    button.wait_for_press();
+    led.off();
+    button.wait_for_release(); 
+}
+#}</code></pre></pre>
+</li>
+<li>
+<p>Run the code and you'll see the LED stays on until the button is pressed.</p>
+</li>
+</ul>
+<a class="header" href="print.html#traffic-lights" id="traffic-lights"><h3>Traffic lights</h3></a>
+<p>You have three LEDs: red, amber, and green. Perfect for traffic lights!</p>
+<ul>
+<li>
+<p>Replace your <code>let mut led = LED::new(25);</code> line with the following:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let mut red = LED::new(25);
+let mut amber = LED::new(8);
+let mut green = LED::new(7);
+#}</code></pre></pre>
+<p>The are three GPIO pin numbers: red, amber, and green (in that order).</p>
+</li>
+<li>
+<p>Now amend your <code>loop</code> to control the <code>LEDs</code>:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    button.wait_for_press();
+    // Switch LEDs on
+    red.on();
+    amber.on();
+    green.on();
+    button.wait_for_release();
+    // Switch LEDs off
+    red.off();
+    amber.off();
+    green.off();
+}
+#}</code></pre></pre>
+</li>
+</ul>
+<a class="header" href="print.html#add-a-buzzer" id="add-a-buzzer"><h3>Add a buzzer</h3></a>
+<p>Now you'll add your buzzer to make some noise.</p>
+<ul>
+<li>
+<p>Add a line below your creation of <code>button</code> and <code>red</code>, <code>amber</code> and <code>green</code> to add a <code>Buzzer</code>:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let mut buzzer = Buzzer::new(15);    
+#}</code></pre></pre>
+</li>
+<li>
+<p><code>Buzzer</code> works exactly like <code>LED</code>, so try adding a <code>buzzer.on();</code> and <code>buzzer.off();</code> into your loop:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    button.wait_for_press();
+    // Switch LEDs on
+    red.on();
+    amber.on();
+    green.on();
+    // Switch Buzzer on
+    buzzer.on();
+    button.wait_for_release();
+    // Switch LEDs off
+    red.off();
+    amber.off();
+    green.off();
+    // Switch Buzzer off
+    buzzer.off();
+}
+#}</code></pre></pre>
+</li>
+</ul>
+<a class="header" href="print.html#traffic-lights-sequence" id="traffic-lights-sequence"><h3>Traffic lights sequence</h3></a>
+<p>With traffic light LEDs, a button and a buzzer, you can create your own traffic lights sequence, complete with pedestrian crossing!</p>
+<ul>
+<li>
+<p>At the top, add the following:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+    use std::thread::sleep;
+    use std::time::Duration;
+#}</code></pre></pre>
+</li>
+<li>
+<p>Modify your loop to perform an automated sequence of LEDs being lit:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    green.on();
+    sleep(Duration::from_secs(1));
+    amber.on();
+    sleep(Duration::from_secs(1));
+    red.on();
+    sleep(Duration::from_secs(1));
+    green.off();
+    amber.off();
+    red.off();
+}        
+#}</code></pre></pre>
+</li>
+<li>
+<p>Add a <code>wait_for_press</code> so that pressing the button initiates the sequence:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+loop{
+    button.wait_for_press();
+    green.on();
+    sleep(Duration::from_secs(1));
+    amber.on();
+    sleep(Duration::from_secs(1));
+    red.on();
+    sleep(Duration::from_secs(1));
+    green.off();
+    amber.off();
+    red.off();
+}        
+#}</code></pre></pre>
+<p>Try some more sequences of your own.</p>
+</li>
+<li>
+<p>Now try creating the full traffic lights sequence:</p>
+<ul>
+<li>Green on</li>
+<li>Amber on</li>
+<li>Red on</li>
+<li>Red and amber on</li>
+<li>Green on</li>
+</ul>
+<p>Be sure to turn the correct lights on and off at the right time, and make sure you use <code>sleep</code> to time the sequence perfectly.</p>
+</li>
+<li>
+<p>Try adding the button for a pedestrian crossing. The button should move the lights to red (not immediately), and give the pedestrians time to cross before moving back to green until the button is pressed again.</p>
+</li>
+<li>
+<p>Now try adding a buzzer to beep quickly to indicate that it is safe to cross, for the benefit of visually impaired pedestrians.</p>
+</li>
+</ul>
+<!-- + Now replace `led.on();` with `led.blink(1,1);`:
+<pre><code>```rust
+loop{
+    led.blink(1,1);
+    button.wait_for_press();
+    led.off();
+    button.wait_for_release(); 
+}
+```
+</code></pre>
+<ul>
+<li>
+<p>Run the code and you'll see the LED blink on and off until the button is pressed, at which point it will turn off completely. When the button is released, it will start blinking again.</p>
+</li>
+<li>
+<p>Try changing the parameters in <code>blink</code> to make it blink faster or slower:</p>
+<ul>
+<li><code>led.blink(2, 2)</code> - 2 seconds on, 2 seconds off</li>
+<li><code>led.blink(0.5, 0.5)</code> - half a second on, half a second off</li>
+<li><code>led.blink(0.1, 0.2)</code> - one tenth of a second on, one fifth of a second off</li>
+</ul>
+<p><code>blink</code>'s first two parameters are <code>on_time</code> and <code>off_time</code>.
+--&gt;</p>
 </li>
 </ul>
 

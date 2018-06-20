@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> Physical Computing with Rust</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html" class="active"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li></ol>
+            <ol class="chapter"><li class="affix"><a href="step_0.html">Physical Computing with Rust</a></li><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> introduction</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html" class="active"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li><li><a href="step_11.html"><strong aria-hidden="true">11.</strong> Making traffic lights</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -154,9 +154,11 @@
 <p>The GPIO pins allow the Raspberry Pi to control and monitor the outside world by being connected to electronic circuits. The Pi is able to control LEDs, turning them on or off, run motors, and many other things. It's also able to detect whether a switch has been pressed, the temperature, and light. We refer to this as physical computing.</p>
 <p>There are 40 pins on the Raspberry Pi (26 pins on early models), and they provide various different functions.</p>
 <p>If you have a RasPiO pin label, it can help to identify what each pin is used for. Make sure your pin label is placed with the keyring hole facing the USB ports, pointed outwards.</p>
-<p><img src="images/raspio-ports.jpg" alt="" /></p>
+<p><img src="images/raspio-ports.jpg" alt="" />
+Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <p>If you don't have a pin label, then this guide can help you to identify the pin numbers:</p>
 <p><img src="images/pinout.png" alt="" /></p>
+<p>Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
 <p>You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:</p>
 <table><thead><tr><th>   </th><th>   </th><th>   </th></tr></thead><tbody>
 <tr><td> 3V3 </td><td> 3.3 volts </td><td> Anything connected to these pins will always get 3.3V of power </td></tr>

@@ -11,6 +11,7 @@ An *active* buzzer can be connected just like an LED, but as they are a little m
 Set up the circuit as shown below:
 
 ![buzzer](images/buzzer-circuit.png)
+Image source: [Raspberry Pi Foundation](https://www.raspberrypi.org/)
 
 + Modify the `examples/buzzer.rs` file:
 

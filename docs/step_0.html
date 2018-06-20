@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Using a buzzer - Physical Computing with Rust</title>
+        <title>Physical Computing with Rust - Physical Computing with Rust</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,7 +87,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="step_0.html">Physical Computing with Rust</a></li><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> introduction</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html" class="active"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li><li><a href="step_11.html"><strong aria-hidden="true">11.</strong> Making traffic lights</a></li></ol>
+            <ol class="chapter"><li class="affix"><a href="step_0.html" class="active">Physical Computing with Rust</a></li><li><a href="step_1.html"><strong aria-hidden="true">1.</strong> introduction</a></li><li><a href="step_2.html"><strong aria-hidden="true">2.</strong> What you will need</a></li><li><a href="step_3.html"><strong aria-hidden="true">3.</strong> GPIO pins</a></li><li><a href="step_4.html"><strong aria-hidden="true">4.</strong> Lighting an LED</a></li><li><a href="step_5.html"><strong aria-hidden="true">5.</strong> Switching an LED on and off</a></li><li><a href="step_6.html"><strong aria-hidden="true">6.</strong> Flashing an LED</a></li><li><a href="step_7.html"><strong aria-hidden="true">7.</strong> Using buttons to get input</a></li><li><a href="step_8.html"><strong aria-hidden="true">8.</strong> Manually controlling the LED</a></li><li><a href="step_9.html"><strong aria-hidden="true">9.</strong> Making a switch</a></li><li><a href="step_10.html"><strong aria-hidden="true">10.</strong> Using a buzzer</a></li><li><a href="step_11.html"><strong aria-hidden="true">11.</strong> Making traffic lights</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -149,77 +149,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="step_10.html#using-a-buzzer" id="using-a-buzzer"><h2>Using a buzzer</h2></a>
-<p>There are two main types of buzzer: <em>active</em> and <em>passive</em>.</p>
-<p>A <em>passive</em> buzzer emits a tone when a voltage is applied across it. It also requires a specific signal to generate a variety of tones. The <em>active</em> buzzers are a lot simpler to use, so these are covered here.</p>
-<a class="header" href="step_10.html#connecting-a-buzzer" id="connecting-a-buzzer"><h3>Connecting a buzzer</h3></a>
-<p>An <em>active</em> buzzer can be connected just like an LED, but as they are a little more robust, you won't be needing a resistor to protect them.</p>
-<p>Set up the circuit as shown below:</p>
-<p><img src="images/buzzer-circuit.png" alt="buzzer" />
-Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a></p>
+                        <a class="header" href="step_0.html#acknowledgement" id="acknowledgement"><h3>Acknowledgement</h3></a>
+<p>This guide is an adapted version of the <a href="https://projects.raspberrypi.org/en/projects/physical-computing"><em>Physical Computing with Python</em></a> by the <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a>.</p>
+<a class="header" href="step_0.html#what-you-already-need-to-know" id="what-you-already-need-to-know"><h3>What you already need to know</h3></a>
 <ul>
-<li>
-<p>Modify the <code>examples/buzzer.rs</code> file:</p>
-<pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
-use rust_gpiozero::*;
-use std::thread::sleep;
-use std::time::Duration;
-
-fn main() {
-
-// Tell the Pi which GPIO pin you are using
-let mut buzzer = Buzzer::new(17);    
-
-}
-</code></pre></pre>
-</li>
+<li>Basic programming concepts</li>
+<li>Basic understanding of programming in Rust</li>
 </ul>
-<ul>
-<li>
-<p>In <code>rust_gpiozero</code>, a <code>Buzzer</code> works exactly like an <code>LED</code>, so try adding a <code>buzzer.on();</code> and <code>buzzer.off();</code> into your loop:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-loop{
-    // Make the buzzer switch on
-    buzzer.on();
-
-    // Wait for one second
-    sleep(Duration::from_secs(1));
-
-    // Make the buzzer switch off
-    buzzer.off();
-
-    // Wait for one second
-    sleep(Duration::from_secs(1));
-    }
-
-#}</code></pre></pre>
-</li>
-<li>
-<p>A <code>Buzzer</code> has a <code>beep(on_time,off_time)</code> method which works like an <code>LED</code>'s <code>blink</code>. Try it out:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-    // Let the buzzer beep
-    buzzer.beep(1,1);
-
-#}</code></pre></pre>
-</li>
-</ul>
+<p><strong>It is highly recommended that you complete atleast the first 3 chapters of <a href="https://doc.rust-lang.org/book/second-edition/"><em>The Rust Programming Language Book</em> v2</a></strong></p>
+<a class="header" href="step_0.html#caveats" id="caveats"><h3>Caveats</h3></a>
+<p>The guide is based on the <code>rust_gpiozero</code> crate which is still in development. This guide does not currently implement all of the steps in the   original <em>Physical Computing with Python</em> guide.</p>
+<p>Feedback and pull requests are welcome!</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="step_9.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
 
                         
-                            <a rel="next" href="step_11.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="step_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -231,13 +180,9 @@ loop{
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="step_9.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
 
                 
-                    <a href="step_11.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="step_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

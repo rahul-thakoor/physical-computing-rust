@@ -3,9 +3,28 @@
 
 ### Hardware
 
-As well as a Raspberry Pi with an SD card and the usual peripherals, you'll also need:
+You will need a Raspberry Pi with an SD card and the usual peripherals. You will also need the following components for partilular steps:
 
-|1x Solderless breadboard | Male-to-female jumper leads | Female-to-female jumper leads | Male-to-male jumper leads |
+- Step 4: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor
+
+- Step 5: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor
+
+- Step 6: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor
+
+- Step 7: 1x Tactile button, Male-to-female jumper leads, 1x Solderless breadboard
+
+- Step 8: 1x LED, Female-to-female jumper leads, 1x 330Ω Resistor, 1x Tactile button, Male-to-female jumper leads
+
+- Step 9: 1x Tactile button, Male-to-female jumper leads
+
+- Step 10: 1x Buzzer, Male-to-female jumper leads, 1x Solderless breadboard
+
+- Step 11: 3x LEDs, 3x 330Ω Resistors, Buzzer, Male-to-female jumper leads, 1x Tactile button, 1x Solderless breadboard
+
+
+> Here is a complete list of components required for _Physical Computing with Python_
+
+ |1x Solderless breadboard | Male-to-female jumper leads | Female-to-female jumper leads | Male-to-male jumper leads |
 |:--------:|:-------:|:--------:|:--------:|
 | ![breadboard](images/breadboard.png) | ![m to f jumper leads](images/jumper-male-to-female.png) | ![f to f jumper leads](images/jumper-female-to-female.png) | ![m to m jumper leads](images/jumper-male-to-male.png) |
 
@@ -21,6 +40,7 @@ As well as a Raspberry Pi with an SD card and the usual peripherals, you'll also
 |:--------:|:-------:|:--------:|:--------:|
 | ![capacitor](images/capacitor.png) | ![buzzer](images/piezo-buzzer.png) | ![motor controller](images/motor-controller.png) | ![battery pack](images/battery-pack.png) |
 
+Images source: [Raspberry Pi Foundation](https://www.raspberrypi.org/)
 ### Software
 
 You will need to install Rust on your Raspbery Pi.

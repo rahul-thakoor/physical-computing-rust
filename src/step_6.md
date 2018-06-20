@@ -2,9 +2,6 @@
 
 With the help of the `sleep` function and a little loop, you can make the LED flash.
 
-+ Create a new binary executable project( called `flash` here).
-
-
 + Edit the `examples/flash.rs` file in an editor with the following code:
 
 
