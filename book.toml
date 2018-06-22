@@ -10,3 +10,4 @@ build-dir = "docs"
 [output.html]
 additional-css = ["asciinema-player.css"]
 additional-js=["asciinema-player.js"]
+google-analytics = "UA-118403602-3"

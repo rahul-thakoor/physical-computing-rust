@@ -1,6 +1,6 @@
 # Summary
 [[Physical Computing with Rust](./step_0.md)]
-- [introduction](./step_1.md)
+- [Introduction](./step_1.md)
 - [What you will need](./step_2.md)
 - [GPIO pins](./step_3.md)
 - [Lighting an LED](./step_4.md)

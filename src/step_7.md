@@ -28,6 +28,24 @@ println!("button pressed");
 
 <!-- todo: Add full script here -->
 
++ The code should look like this:
+
+```rust
+extern crate rust_gpiozero;
+use rust_gpiozero::*;
+
+fn main() {
+    // Create a button which is attached to Pin 22
+    let button = Button::new(22);
+
+    // Wait for button to be pressed
+    button.wait_for_press();
+
+    // Message to display when button is pressed
+    println!("button pressed");
+}
+```
+
 + Save the file and run the code with: 
 
 ```bash
