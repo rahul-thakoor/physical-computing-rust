@@ -7,19 +7,27 @@
 + Get the project code:
 
 ```bash
-git clone https://github.com/rahul-thakoor/pi-phys-comp-rs
+git clone https://github.com/rahul-thakoor/physcomp-rs-files
 
-cd pi-phys-comp-rs
+cd physcomp-rs-files
 ```
 
 This directory contains the scaffolding for the whole lesson.
 
 ```bash
-pi-phys-comp-rs
+physcomp-rs-files/
 ├── Cargo.toml
+├── README.md
+├── examples
+│   ├── button.rs
+│   ├── buzzer.rs
+│   ├── flash.rs
+│   ├── led_button.rs
+│   ├── onoff.rs
+│   ├── switch.rs
+│   └── trafficlights.rs
 └── src
-    └── main.rs    
-
+    └── main.rs
 ```
 
 <!-- <div>
@@ -59,12 +67,14 @@ cargo run --example onoff
 ```
 + Your LED should switch on.
 
-> The first time you run the program, you might get an error like this:
+> When you run the program, you might get an error like this which may be cause by the `export` function in `sysfs_gpio` crate:
 >```bash
 >thread 'main' panicked at 'Could not set pin to Output mode: Io(Error { repr: Os { code: 13, message: "Permission denied" } })', /checkout/src/libcore/result.rs:916:5
 >note: Run with `RUST_BACKTRACE=1` for a backtrace.
 >```
->Just, run the `cargo run --example onoff` command again.
+>_The main cases in which this function will fail and return an error are the following: 1. The system does not support the GPIO sysfs interface 2. The requested GPIO is out of range and cannot be exported 3. The requested GPIO is in use by the kernel and cannot be exported by use in userspace_ ~[Source]( http://rust-embedded.github.io/rust-sysfs-gpio/sysfs_gpio/struct.Pin.html#method.export)
+
+>Try running the `cargo run --example onoff` command again or using `sudo` to run the compiled example, e.g `sudo ./target/debug/examples/onoff`
 
 + To make it switch off you can edit the `examples/onoff.rs` to the following:
 

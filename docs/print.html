@@ -257,16 +257,24 @@ Image source: <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a>
 <ul>
 <li>Get the project code:</li>
 </ul>
-<pre><code class="language-bash">git clone https://github.com/rahul-thakoor/pi-phys-comp-rs
+<pre><code class="language-bash">git clone https://github.com/rahul-thakoor/physcomp-rs-files
 
-cd pi-phys-comp-rs
+cd physcomp-rs-files
 </code></pre>
 <p>This directory contains the scaffolding for the whole lesson.</p>
-<pre><code class="language-bash">pi-phys-comp-rs
+<pre><code class="language-bash">physcomp-rs-files/
 ├── Cargo.toml
+├── README.md
+├── examples
+│   ├── button.rs
+│   ├── buzzer.rs
+│   ├── flash.rs
+│   ├── led_button.rs
+│   ├── onoff.rs
+│   ├── switch.rs
+│   └── trafficlights.rs
 └── src
-    └── main.rs    
-
+    └── main.rs
 </code></pre>
 <!-- <div>
 <asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
@@ -306,11 +314,14 @@ fn main() {
 <li>Your LED should switch on.</li>
 </ul>
 <blockquote>
-<p>The first time you run the program, you might get an error like this:</p>
+<p>When you run the program, you might get an error like this which may be cause by the <code>export</code> function in <code>sysfs_gpio</code> crate:</p>
 <pre><code class="language-bash">thread 'main' panicked at 'Could not set pin to Output mode: Io(Error { repr: Os { code: 13, message: &quot;Permission denied&quot; } })', /checkout/src/libcore/result.rs:916:5
 note: Run with `RUST_BACKTRACE=1` for a backtrace.
 </code></pre>
-<p>Just, run the <code>cargo run --example onoff</code> command again.</p>
+<p><em>The main cases in which this function will fail and return an error are the following: 1. The system does not support the GPIO sysfs interface 2. The requested GPIO is out of range and cannot be exported 3. The requested GPIO is in use by the kernel and cannot be exported by use in userspace</em> ~<a href="http://rust-embedded.github.io/rust-sysfs-gpio/sysfs_gpio/struct.Pin.html#method.export">Source</a></p>
+</blockquote>
+<blockquote>
+<p>Try running the <code>cargo run --example onoff</code> command again or using <code>sudo</code> to run the compiled example, e.g <code>sudo ./target/debug/examples/onoff</code></p>
 </blockquote>
 <ul>
 <li>To make it switch off you can edit the <code>examples/onoff.rs</code> to the following:</li>
