@@ -34,7 +34,7 @@ physcomp-rs-files/
 <asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
 </div> -->
 
-+ You can switch an LED on and off by writing a program. Open the `onoff.rs` file in the `examples` directory using your preferred editor with the following: 
++ You can switch an LED on and off by writing a program. Open and edit the `onoff.rs` file in the `examples` directory using your preferred editor with the following: 
 
 
 ``` rust

@@ -280,7 +280,7 @@ cd physcomp-rs-files
 <asciinema-player src="asciinemas/185959.json" cols="81" rows="20"></asciinema-player>
 </div> -->
 <ul>
-<li>You can switch an LED on and off by writing a program. Open the <code>onoff.rs</code> file in the <code>examples</code> directory using your preferred editor with the following:</li>
+<li>You can switch an LED on and off by writing a program. Open and edit the <code>onoff.rs</code> file in the <code>examples</code> directory using your preferred editor with the following:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">extern crate rust_gpiozero;
 use rust_gpiozero::*;
@@ -943,21 +943,6 @@ loop{
             }
         </script>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
