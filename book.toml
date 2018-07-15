@@ -3,6 +3,7 @@ authors = ["Rahul Thakoor"]
 multilingual = false
 src = "src"
 title = "Physical Computing with Rust"
+description = "Use Rust to control LEDs, Buzzers, and more with the Raspberry Pi"
 
 [build]
 build-dir = "docs"
